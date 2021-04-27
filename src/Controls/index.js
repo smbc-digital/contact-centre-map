@@ -67,31 +67,21 @@ const AddLayerControlsOverlays = (Config, DynamicLayerGroup, WMSLayerGroup, mapR
 }
 
 const SearchControlOverlay = () => {
-  const searchAddress = (rawPostcode, callResponse) => {
-    const postcode = rawPostcode.toUpperCase().replace(/^(SK[0-9]{1,2})[ ]{0,1}([0-9]{1}[A-Z]{2})$/, '$1 $2')
-    if(postcode.length < 6 || postcode.length > 8)
-      return []
-      
-    const url = `https://spatial.stockport.gov.uk/geoserver/wfs?&service=wfs&version=1.0.0&request=getfeature&typename=address:llpg_points&Filter=%3CPropertyIsEqualTo%3E%3CPropertyName%3Epostcode%3C/PropertyName%3E%3CLiteral%3E${postcode}%3C/Literal%3E%3C/PropertyIsEqualTo%3E&outputformat=json`
-
-    return fetch(url)
+  const searchAddress = (rawSearchTerm, callResponse) => 
+    fetch(`https://spatial.stockport.gov.uk/geoserver/wfs?request=getfeature&outputformat=json&typename=address:llpg_points&cql_filter=address%20ilike%27%25${rawSearchTerm}%25%27`)
       .then(res => res.clone().json())
       .then(response => {
         callResponse(response.features.map(item => {
           const address = item.properties.address.replace(/\r\n/g, ', ').toUpperCase().trim()
           return { 'loc': item.geometry.coordinates.reverse(), 'title': address }
         }))
-        }
-      )
-  }
-
-  return new Leaflet.Control.Search({ 
+      })
+  return new Leaflet.Control.Search({
     sourceData: searchAddress,
     position: 'bottomleft',
-    filterData: (_, val2) => val2,
-    textPlaceholder: 'Search by postcode',
     zoom: 19,
-    marker: false
+    marker: false,
+    minLength: 4
   })
 }
 
