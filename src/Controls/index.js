@@ -80,6 +80,7 @@ const SearchControlOverlay = () => {
     sourceData: searchAddress,
     position: 'bottomleft',
     zoom: 19,
+    filterData: (_, val2) => val2,
     marker: false,
     minLength: 4
   })
