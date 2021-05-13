@@ -29,6 +29,21 @@ const prowPopup = (feature, layer) => {
   layer.bindPopup(content)
 }
 
+const conservationPopup = (feature, layer) => {
+  
+  const content = `<div class="smbc-map__item">
+    <div class="smbc-map__item__header__block">
+      <i class="fa fa-home smbc-map__item__header__block__icon" aria-hidden="true"></i>
+      <span class="smbc-map__item__header__block__title">Conservation Area</span>
+    </div>
+    <div class="smbc-map__item__body">
+      <p>Name: ${feature.properties.cons_area}</p>
+    </div>
+  </div>`
+ 
+  layer.bindPopup(content)
+ }
+
  const tpoPopup = (feature, layer) => {
   
   const content = `<div class="smbc-map__item">
@@ -67,6 +82,7 @@ const prowPopup = (feature, layer) => {
 
  export {
   prowPopup,
+  conservationPopup,
   tpoPopup,
   Land_Ownership_Popup,
   grittingroutesPopup

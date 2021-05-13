@@ -29,6 +29,14 @@ function LandOwnershipstyle(feature) {
         }
     }
 
+    const conservationStyle = {
+        color: '#FF0000',
+        weight: 1,
+        opacity: 0.2,
+        fillColor: '#FF0000',
+        fillOpacity: 0.2
+    }
+
     const prowStyle = {
         color: '#006d2c',
         weight: 4,
@@ -93,5 +101,6 @@ revokedtpoStyle,
 prowStyle,
 LandOwnershipstyle,
 adopted_highwaysStyle,
-grittingroutesStyle
+grittingroutesStyle,
+conservationStyle
 }

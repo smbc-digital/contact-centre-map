@@ -1,5 +1,5 @@
-import { prowPopup,tpoPopup,Land_Ownership_Popup, grittingroutesPopup } from './Popups'
-import { prowStyle, tpoStyle, proposedtpoStyle, revokedtpoStyle, LandOwnershipstyle, adopted_highwaysStyle, grittingroutesStyle } from './Styles'
+import { prowPopup,tpoPopup,Land_Ownership_Popup, grittingroutesPopup, conservationPopup } from './Popups'
+import { prowStyle, tpoStyle, proposedtpoStyle, revokedtpoStyle, LandOwnershipstyle, adopted_highwaysStyle, grittingroutesStyle, conservationStyle } from './Styles'
 
 const Configuration = {
     Map: {
@@ -49,7 +49,17 @@ const Configuration = {
             displayOverlay: true,
             visibleByDefault: false
         },
-
+        {
+            key: 'Conservation Areas',
+            url: 'https://spatial.stockport.gov.uk/geoserver/wfs?service=WFS&version=1.1.0&request=GetFeature&typeName=heritage:conservation_area&outputFormat=application/json&bbox={0},EPSG:4326&srsName=EPSG:4326',
+            layerOptions: {
+                onEachFeature: conservationPopup,
+                maxZoom: 2,
+                style: conservationStyle
+            },
+            displayOverlay: true,
+            visibleByDefault: false
+        },
         {
             key: 'Tree Preservation Orders',
             url: 'https://spatial.stockport.gov.uk/geoserver/wfs?service=WFS&version=1.1.0&request=GetFeature&typeName=trees:tpo_merged&outputFormat=application/json&bbox={0},EPSG:4326&srsName=EPSG:4326',
