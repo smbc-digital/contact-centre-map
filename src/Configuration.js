@@ -4,7 +4,7 @@ import { prowStyle, tpoStyle, proposedtpoStyle, revokedtpoStyle, LandOwnershipst
 const Configuration = {
     Map: {
         StartingLatLng: [53.39205825732247, -2.1383008755576998],
-        StartingZoom: 17,
+        StartingZoom: 12,
         FullscreenControl: true,
         DisplayLayerControls: true,
         DisplayGrayScale: true,
@@ -137,6 +137,22 @@ const Configuration = {
     ],
     StaticData: 
     [
+        
+        {
+            key: 'boundary old',
+            url: 'https://spatialgeojson.s3-eu-west-1.amazonaws.com/webmapping/boundary_old.geojson',
+            layerOptions: {
+                interactive: false,
+                maxZoom: 9,
+                style: {
+                    color: '#FF0000',
+                    weight: 4,
+                    opacity: 1,
+                    fillColor: '#FF0000',
+                    fillOpacity: 0
+                }
+            }
+        },
         {
             key: 'boundary',
             url: 'https://spatialgeojson.s3-eu-west-1.amazonaws.com/webmapping/boundary.geojson',
