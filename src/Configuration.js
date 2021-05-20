@@ -1,5 +1,6 @@
-import { prowPopup,tpoPopup,Land_Ownership_Popup, grittingroutesPopup, conservationPopup } from './Popups'
-import { prowStyle, tpoStyle, proposedtpoStyle, revokedtpoStyle, LandOwnershipstyle, adopted_highwaysStyle, grittingroutesStyle, conservationStyle } from './Styles'
+import Leaflet from 'leaflet'
+import { prowPopup,tpoPopup,Land_Ownership_Popup, grittingroutesPopup, conservationPopup, gritboxPopup } from './Popups'
+import { prowStyle, tpoStyle, proposedtpoStyle, revokedtpoStyle, LandOwnershipstyle, adopted_highwaysStyle, grittingroutesStyle, conservationStyle, gritboxesStyle } from './Styles'
 
 const Configuration = {
     Map: {
@@ -103,6 +104,22 @@ const Configuration = {
                 onEachFeature: grittingroutesPopup,
                 maxZoom: 16,
                 style: grittingroutesStyle
+            },
+            displayOverlay: true,
+            visibleByDefault: false
+        },
+
+        {
+            key: 'Grit Boxes',
+            url: 'https://spatial.stockport.gov.uk/geoserver/wfs?service=WFS&version=1.1.0&request=GetFeature&typeName=highway_assets:grit_boxes&outputFormat=application/json&bbox={0},EPSG:4326&srsName=EPSG:4326',
+            layerOptions: {
+                maxZoom: 2,
+                onEachFeature: gritboxPopup,
+                style: gritboxesStyle,
+                pointToLayer: (feature, latlng) => {
+                    return Leaflet.circleMarker (latlng)
+
+                }
             },
             displayOverlay: true,
             visibleByDefault: false

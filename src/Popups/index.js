@@ -21,6 +21,7 @@ const prowPopup = (feature, layer) => {
   <span class="smbc-map__item__header__block__title">Land Ownership</span>
 </div>
 <div class="smbc-map__item__body">
+  <p>Name: ${feature.properties.property_name}</p>
   <p>Committee: ${feature.properties.committee_new}</p>
   <p>Title Number: ${feature.properties.titlenumber}</p>
 </div>
@@ -80,10 +81,27 @@ const conservationPopup = (feature, layer) => {
   layer.bindPopup(content)
  } 
 
+ const gritboxPopup = (feature, layer) => {
+ 
+  const content = `<div class="smbc-map__item">
+   <div class="smbc-map__item__header__block">
+     <i class="fa fa-snowflake smbc-map__item__header__block__icon" aria-hidden="true"></i>
+     <span class="smbc-map__item__header__block__title">Grit Bins</span>
+   </div>
+   <div class="smbc-map__item__body">
+     <p>Street: ${feature.properties.street}</p>
+     <p>Position: ${feature.properties.position}</p>
+   </div>
+ </div>`
+  
+  layer.bindPopup(content)
+ }
+ 
  export {
   prowPopup,
   conservationPopup,
   tpoPopup,
   Land_Ownership_Popup,
-  grittingroutesPopup
+  grittingroutesPopup,
+  gritboxPopup
 }
