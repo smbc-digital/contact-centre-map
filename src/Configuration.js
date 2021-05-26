@@ -1,6 +1,6 @@
 import Leaflet from 'leaflet'
-import { prowPopup,tpoPopup,Land_Ownership_Popup, grittingroutesPopup, conservationPopup, gritboxPopup } from './Popups'
-import { prowStyle, tpoStyle, proposedtpoStyle, revokedtpoStyle, LandOwnershipstyle, adopted_highwaysStyle, grittingroutesStyle, conservationStyle, gritboxesStyle } from './Styles'
+import { prowPopup,tpoPopup,Land_Ownership_Popup, grittingroutesPopup, conservationPopup, gritboxPopup, propertyextentsPopup } from './Popups'
+import { prowStyle, tpoStyle, proposedtpoStyle, revokedtpoStyle, LandOwnershipstyle, adopted_highwaysStyle, grittingroutesStyle, conservationStyle, gritboxesStyle, propertyextentsStyle } from './Styles'
 
 const Configuration = {
     Map: {
@@ -123,6 +123,18 @@ const Configuration = {
             },
             displayOverlay: true,
             visibleByDefault: false
+        },
+
+        {
+            key: 'Property Extents',
+            url: 'https://spatial.stockport.gov.uk/geoserver/wfs?service=WFS&version=1.1.0&request=GetFeature&typeName=address:property_extents&outputFormat=application/json&bbox={0},EPSG:4326&srsName=EPSG:4326',
+            layerOptions: {
+                onEachFeature: propertyextentsPopup,
+                maxZoom: 18,
+                style: propertyextentsStyle
+            },
+            displayOverlay: false,
+            visibleByDefault: true
         },
 
         {

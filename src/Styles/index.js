@@ -105,12 +105,20 @@ function getColor_grittingroutes(d) {
                         return '#33a02c'    
                 }
     }
-    function grittingroutesStyle (feature) {
+function grittingroutesStyle (feature) {
     return {
         color: getColor_grittingroutes (feature.properties.classification),
         weight: 4,
         opacity: 1,
         }
+    }
+
+    const propertyextentsStyle = {
+        color: '#00ff00',
+        weight: 0,
+        opacity: 1,
+        fillColor: '#00ff00',
+        fillOpacity: 0
     }
 
 export {
@@ -122,5 +130,6 @@ LandOwnershipstyle,
 adopted_highwaysStyle,
 grittingroutesStyle,
 conservationStyle,
-gritboxesStyle
+gritboxesStyle,
+propertyextentsStyle
 }
