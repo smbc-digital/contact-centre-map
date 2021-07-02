@@ -121,6 +121,14 @@ function grittingroutesStyle (feature) {
         fillOpacity: 0
     }
 
+    const section38Style = {
+    color: '#800080',
+    weight: 3,
+    opacity: 1,
+    fillColor: '#800080',
+    fillOpacity: 0.5
+    }
+
 export {
 tpoStyle,
 proposedtpoStyle,
@@ -131,5 +139,6 @@ adopted_highwaysStyle,
 grittingroutesStyle,
 conservationStyle,
 gritboxesStyle,
-propertyextentsStyle
+propertyextentsStyle,
+section38Style
 }

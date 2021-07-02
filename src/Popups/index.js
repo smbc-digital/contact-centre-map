@@ -115,6 +115,20 @@ const conservationPopup = (feature, layer) => {
   
   layer.bindPopup(content)
  }
+
+ const section38Popup = (feature, layer) => {
+  const content = `<div class="smbc-map__item">
+    <div class="smbc-map__item__header__block">
+      <i class="fa fa-road smbc-map__item__header__block__icon" aria-hidden="true"></i>
+      <span class="smbc-map__item__header__block__title">Section 38</span>
+    </div>
+    <div class="smbc-map__item__body"> 
+      <p>Status: ${feature.properties.status}</p>
+      <p>Date: ${feature.properties.date_registered}</p>
+    </div>`
+
+    layer.bindPopup(content)
+}
  
  
  export {
@@ -124,5 +138,6 @@ const conservationPopup = (feature, layer) => {
   Land_Ownership_Popup,
   grittingroutesPopup,
   gritboxPopup,
-  propertyextentsPopup
+  propertyextentsPopup,
+  section38Popup
 }
