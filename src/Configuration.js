@@ -1,6 +1,6 @@
 import Leaflet from 'leaflet'
-import { prowPopup,tpoPopup,Land_Ownership_Popup, grittingroutesPopup, conservationPopup, gritboxPopup, propertyextentsPopup, section38Popup } from './Popups'
-import { prowStyle, tpoStyle, proposedtpoStyle, revokedtpoStyle, LandOwnershipstyle, adopted_highwaysStyle, grittingroutesStyle, conservationStyle, gritboxesStyle, propertyextentsStyle, section38Style } from './Styles'
+import { prowPopup,tpoPopup,Land_Ownership_Popup, grittingroutesPopup, conservationPopup, gritboxPopup, propertyextentsPopup, section38Popup, leasesPopup } from './Popups'
+import { prowStyle, tpoStyle, proposedtpoStyle, revokedtpoStyle, LandOwnershipstyle, adopted_highwaysStyle, grittingroutesStyle, conservationStyle, gritboxesStyle, propertyextentsStyle, section38Style, leasesStyle } from './Styles'
 
 const Configuration = {
     Map: {
@@ -27,7 +27,17 @@ const Configuration = {
             displayOverlay: true,
             visibleByDefault: false
         },
-    
+        {
+            key: 'Leases',
+            url: 'https://spatial.stockport.gov.uk/geoserver/wfs?service=WFS&version=1.1.0&request=GetFeature&typeName=land_ownership:leases_all&outputFormat=application/json&bbox={0},EPSG:4326&srsName=EPSG:4326',
+            layerOptions: {
+                style: leasesStyle,
+                onEachFeature: leasesPopup,
+                maxZoom: 16
+            },
+            displayOverlay: true,
+            visibleByDefault: false
+        },
         {
             key: 'Public Rights of Way',
             url: 'https://spatial.stockport.gov.uk/geoserver/wfs?service=WFS&version=1.1.0&request=GetFeature&typeName=highways:public_rights_of_way&outputFormat=application/json&bbox={0},EPSG:4326&srsName=EPSG:4326',

@@ -129,6 +129,14 @@ function grittingroutesStyle (feature) {
     fillOpacity: 0.5
     }
 
+    const leasesStyle = {
+        color: '#006400',
+        weight: 4,
+        opacity: 1,
+        fillColor: '#006400',
+        fillOpacity: 0
+}
+
 export {
 tpoStyle,
 proposedtpoStyle,
@@ -140,5 +148,6 @@ grittingroutesStyle,
 conservationStyle,
 gritboxesStyle,
 propertyextentsStyle,
-section38Style
+section38Style,
+leasesStyle
 }
